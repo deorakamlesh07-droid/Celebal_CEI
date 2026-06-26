@@ -197,3 +197,5 @@ The trained model learns to reconstruct clean handwritten digits by removing Gau
 # 🎓 Conclusion
 
 This project demonstrates the complete implementation of a **Convolutional Denoising Autoencoder** for image denoising using the MNIST dataset. It highlights the effectiveness of encoder–decoder networks in learning compact feature representations and reconstructing clean images from noisy inputs. The project provides a strong foundation for advanced computer vision tasks such as image restoration, medical image enhancement, document cleanup, and generative deep learning.
+# 👨‍💻 Author
+Kamlesh Deora B.Tech CSE (AI & ML) Celebal Technologies – Data Science Internship (Week 6)
