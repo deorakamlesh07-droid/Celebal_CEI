@@ -92,9 +92,6 @@ Week7-RAG/
 
 ---
 
-## 📄 License & Attribution
-
-This project is provided for educational purposes under the MIT License. Feel free to adapt the modular components for your own RAG experiments.
 
 
 
@@ -118,8 +115,29 @@ The following screenshots demonstrate the key features of the RAG-based Document
 <p align="center">
   <img src="https://raw.githubusercontent.com/deorakamlesh07-droid/Celabal_CEI/main/Assignment7/Output/tuning.png" alt="Tuning Experiments" width="900"/>
 </p>
-## ✅ Validation Center
+ ✅ Validation Center
 <p align="center">
   <img src="https://raw.githubusercontent.com/deorakamlesh07-droid/Celabal_CEI/main/Assignment7/Output/validation.png" alt="Validation Center" width="900"/>
 </p>
-*Place the above screenshots in the `Assignment7/Output` folder of the repository.*
+
+## 🎓 Learning Outcomes
+By completing this project, the following concepts and skills were demonstrated:
+
+- Developed a complete **Retrieval-Augmented Generation (RAG)** pipeline from document ingestion to answer generation.
+- Implemented document processing for **PDF and TXT** files with automated text extraction and preprocessing.
+- Applied **text chunking strategies** using configurable chunk size and overlap to improve retrieval quality.
+- Generated semantic embeddings using **Sentence Transformers** and stored them efficiently in a **FAISS** vector database.
+- Performed **similarity-based retrieval** to provide relevant context for Large Language Models (LLMs).
+- Integrated the **Groq API** with a modern LLM to generate context-aware, grounded responses.
+- Designed a modular and scalable architecture with reusable components for loading, preprocessing, embedding, retrieval, and generation.
+- Built an interactive **Streamlit** web application with an intuitive user interface for document upload, question answering, analytics, and validation.
+- Evaluated system performance using latency measurements, retrieval statistics, and configurable RAG parameters.
+- Implemented validation techniques to reduce hallucinations and verify that generated answers are supported by retrieved document context.
+- Gained practical experience with **LangChain**, **FAISS**, **Sentence Transformers**, **Prompt Engineering**, and modern **Generative AI** application development.
+- Strengthened understanding of end-to-end AI application deployment, modular software engineering, and production-ready RAG system design.
+
+## 👨‍💻 Author
+
+**Kamlesh Deora**
+B.Tech CSE (AI & ML)
+Celebal Technologies – Data Science Internship (Week 7)
