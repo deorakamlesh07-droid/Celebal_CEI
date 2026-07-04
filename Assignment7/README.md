@@ -61,7 +61,7 @@ streamlit run app.py
 - Switch to the **AI Chat Hub** tab to ask questions, view retrieved source blocks, and download a PDF report of the conversation.
 - Explore the remaining tabs for performance metrics, tuning experiments, and validation results.
 
----
+-
 
 ## 📁 Repository Structure
 ```
@@ -96,18 +96,30 @@ Week7-RAG/
 
 This project is provided for educational purposes under the MIT License. Feel free to adapt the modular components for your own RAG experiments.
 
----
 
-*Designed by the DeepMind‑Advanced Agentic Coding team for the Celebal Technologies Week 7 assignment.*
 
-## Assignment7/Output 📁
+# Output 📸 Application Screenshots
 
-| Name | Last commit message | Last commit date |
-|------|----------------------|-------------------|
-| Ai chat bot.png | (Add your commit message) | (Add date) |
-| Performance Analytics.png | (Add your commit message) | (Add date) |
-| tuning.png | (Add your commit message) | (Add date) |
-| upload document.png | (Add your commit message) | (Add date) |
-| validation.png | (Add your commit message) | (Add date) |
+The following screenshots demonstrate the key features of the RAG-based Document Question Answering System.
+ 📂 Documents Hub
+<p align="center">
+  <img src="https://raw.githubusercontent.com/deorakamlesh07-droid/Celabal_CEI/main/Assignment7/Output/upload%20document.png" alt="Documents Hub" width="900"/>
+</p>
 
+ 💬 AI Chat Hub
+<p align="center">
+  <img src="https://raw.githubusercontent.com/deorakamlesh07-droid/Celabal_CEI/main/Assignment7/Output/Ai%20chat%20bot.png" alt="AI Chat Hub" width="900"/>
+</p>
+📊 Performance Analytics
+<p align="center">
+  <img src="https://raw.githubusercontent.com/deorakamlesh07-droid/Celabal_CEI/main/Assignment7/Output/Performance%20Analytics.png" alt="Performance Analytics" width="900"/>
+</p>
+ 🧪 Tuning Experiments
+<p align="center">
+  <img src="https://raw.githubusercontent.com/deorakamlesh07-droid/Celabal_CEI/main/Assignment7/Output/tuning.png" alt="Tuning Experiments" width="900"/>
+</p>
+## ✅ Validation Center
+<p align="center">
+  <img src="https://raw.githubusercontent.com/deorakamlesh07-droid/Celabal_CEI/main/Assignment7/Output/validation.png" alt="Validation Center" width="900"/>
+</p>
 *Place the above screenshots in the `Assignment7/Output` folder of the repository.*
