@@ -32,9 +32,7 @@ The UI is organized into five interactive tabs:
 ## 🛠️ Installation & Setup
 
 1. **Clone the repository** (or navigate to the workspace root):
-   ```bash
-   cd d:/Dekstop/rag/lawyer/Week7-RAG
-   ```
+  
 2. **Create a `.env` file** with your Groq credentials (required for LLM calls):
    ```env
    GROQ_API_KEY=your_groq_api_key_here
