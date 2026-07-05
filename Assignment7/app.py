@@ -1,8 +1,3 @@
-"""
-Rebranded Native Streamlit Application for RAG Pipeline.
-Coordinates loaders, retrievers, generators, metrics, and dashboard tabs.
-"""
-
 import os
 import time
 from datetime import datetime
@@ -36,7 +31,7 @@ from modules.generator import generate_answer, DEFAULT_MODEL
 from modules.metrics import run_system_validation
 from modules.utils import sys_logger, generate_pdf_report
 
-# ── Page Configuration ────────────────────────────────────────────────────────
+#  Page Configuration 
 st.set_page_config(
     page_title="RAG Intelligence Workspace",
     page_icon="⚡",
@@ -164,8 +159,8 @@ with st.sidebar:
         st.success("History cleared!")
         st.rerun()
 
-# ── Title Header ─────────────────────────────────────────────────────────────
-st.title("⚡ RAG Intelligence Workspace")
+#  Title Header 
+st.title(" RAG Intelligence Workspace")
 st.caption("Legal Compliance Knowledge Base ingestion, benchmarking, and semantic verification engine.")
 
 # ── Tabs Navigation ───────────────────────────────────────────────────────────
@@ -177,7 +172,6 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
     "✅ Validation Center"
 ])
 
-# ── Tab 1: Documents Hub ──────────────────────────────────────────────────────
 with tab1:
     st.header("📂 Document Intelligence")
     st.write("Upload raw TXT or PDF documents to build vector database representations.")
@@ -287,7 +281,7 @@ with tab1:
     else:
         st.info("No active documents loaded. Please upload compliance files above.")
 
-# ── Tab 2: AI Chat Hub ────────────────────────────────────────────────────────
+# Tab 2 AI Chat 
 with tab2:
     st.header("💬 AI Chat Workspace")
     st.write("Query the indexed documents and view retrieved similarity source chunks.")
@@ -380,7 +374,7 @@ with tab2:
         else:
             st.info("Ask queries to view context block cards.")
 
-# ── Tab 3: Performance Analytics ──────────────────────────────────────────────
+#  Tab 3 Performance Analytics
 with tab3:
     st.header("📊 Performance Analytics")
     st.write("Real-time telemetry diagnostic metrics detailing latencies, parameters, and database sizes.")
@@ -431,7 +425,7 @@ with tab3:
         st.markdown(f"**Embedding Dimensions:** `{st.session_state.metrics['embedding_dimension']}`")
         st.markdown(f"**LLM Configuration:** `{st.session_state.metrics['llm']}`")
 
-# ── Tab 4: Tuning Experiments ─────────────────────────────────────────────────
+#  Tab 4: Tuning Experiments
 with tab4:
     st.header("🧪 Pipeline Tuning Experiments")
     st.write("Compare parameters and configurations to optimize token density and response accuracy.")
@@ -462,7 +456,7 @@ with tab4:
     ]
     st.dataframe(emb_bench, use_container_width=True)
 
-# ── Tab 5: Validation Center ──────────────────────────────────────────────────
+#  Tab 5: Validation Center
 with tab5:
     st.header("✅ Validation Center")
     st.write("Run grounding evaluation tests to check context relevance and detect hallucinations.")
