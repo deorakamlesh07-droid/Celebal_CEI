@@ -28,6 +28,36 @@ The UI is organized into five interactive tabs:
 - **Educational showcase** – Ideal for learning RAG pipelines, prompt engineering, and hybrid search techniques.
 
 ---
+## 🌐 Live Demo (Streamlit Deployment)
+
+This project has been successfully deployed using **Streamlit Community Cloud**, enabling users to access the application directly through a web browser without requiring any local installation or configuration.
+
+The deployed application demonstrates the complete **Retrieval-Augmented Generation (RAG)** workflow, including document ingestion, text preprocessing, chunking, embedding generation, semantic retrieval using **FAISS**, and context-aware answer generation using a **Large Language Model (LLM)**. It provides an interactive and user-friendly interface for uploading documents, asking questions, analyzing retrieval performance, running validation tests, and experimenting with different RAG configurations.
+
+### 🔗 Live Application
+
+**🚀 Streamlit App:**  
+👉 **https://kamleshcelabal.streamlit.app/**
+
+### ✨ Deployment Features
+
+- 🌐 Hosted on **Streamlit Community Cloud**
+- 📄 Upload and process **PDF** and **TXT** documents
+- 🔍 Semantic document retrieval using **FAISS Vector Database**
+- 🤖 Context-aware answer generation using **Groq LLM**
+- 📊 Interactive **Performance Analytics Dashboard**
+- 🧪 Built-in **Tuning Experiments** for chunking and retrieval optimization
+- ✅ Automated **Validation Suite** to evaluate grounded responses
+- 📥 Generate and download conversation reports in **PDF** format
+- 📱 Responsive and accessible from any modern web browser
+
+> **Note:** The application is hosted on **Streamlit Community Cloud**. Uploaded documents and generated vector databases are stored only for the current user session and may be cleared whenever the application restarts or the session expires.
+
+---
+
+### 🚀 Quick Access
+
+[![Live Demo](https://img.shields.io/badge/🚀%20Launch%20Application-Streamlit-red?style=for-the-badge&logo=streamlit)](https://kamleshcelabal.streamlit.app/)
 
 ## 🛠️ Installation & Setup
 
