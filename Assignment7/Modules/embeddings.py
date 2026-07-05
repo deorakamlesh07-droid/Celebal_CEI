@@ -1,6 +1,6 @@
 """
 Embeddings Module.
-Manages HuggingFaceEmbeddings models, calculates model dimensions, and measures timing.
+
 """
 
 import os
@@ -24,9 +24,7 @@ MODEL_CONFIGS = {
 }
 
 def get_embeddings_model(model_key: str = "MiniLM") -> HuggingFaceEmbeddings:
-    """
-    Returns the instantiated HuggingFaceEmbeddings object for a given key.
-    """
+   
     config = MODEL_CONFIGS.get(model_key, MODEL_CONFIGS["MiniLM"])
     return HuggingFaceEmbeddings(
         model_name=config["model_name"],
