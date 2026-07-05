@@ -22,7 +22,6 @@ The UI is organized into five interactive tabs:
 - **✅ Validation Center** – Run a ground‑truth test suite and see PASS/FAIL results.
 
 ### Why Use This Project?
-- **Domain‑agnostic** – No lawyer‑specific terminology; works with any textual corpus (manuals, research papers, policies, etc.).
 - **Modular architecture** – Separate loader, pre‑processor, splitter, embeddings, vector store, retriever, generator, and utils for easy extension and unit testing.
 - **Performance‑focused** – Real‑time latency metrics, vector‑store size reporting, and configurable chunk parameters.
 - **Groundedness validation** – Automated checks help ensure answers are based on retrieved context, reducing hallucinations.
