@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+data/uploads/
+data/vector_store/
+data/exports/
+*.log
+*.err
+.streamlit/secrets.toml

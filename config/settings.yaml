@@ -1,0 +1,32 @@
+app:
+  name: StudyMate RAG
+  environment: local
+  log_level: INFO
+
+paths:
+  upload_dir: data/uploads
+  vector_db_path: data/vector_store
+  export_dir: data/exports
+  summary_cache_dir: data/summary_cache
+  learning_data_dir: data/learning
+  audio_dir: data/audio
+
+voice:
+  whisper_model: base
+  tts_rate: 175
+  max_recording_seconds: 120
+  max_audio_size_mb: 25
+
+rag:
+  chunk_size: 900
+  chunk_overlap: 140
+  top_k: 5
+  similarity_cutoff: 0.35
+
+llm:
+  provider: groq
+  groq_model: llama-3.1-8b-instant
+  temperature: 0.2
+
+embeddings:
+  model_name: BAAI/bge-small-en-v1.5
