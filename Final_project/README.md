@@ -5,10 +5,10 @@ This repository contains my Celebal Excellence Internship work, including weekly
 ## Repository Contents
 
 - `Assignment1` to `Assignment8`: Internship assignments and submissions
-- `src/studymate_rag`: Final project source code
-- `config`: Runtime YAML configuration
-- `docs`: Architecture, deployment, and presentation notes
-- `tests`: Focused unit tests
+- `Final_project/src/studymate_rag`: Final project source code
+- `Final_project/config`: Runtime YAML configuration
+- `Final_project/docs`: Architecture, deployment, and presentation notes
+- `Final_project/tests`: Focused unit tests
 
 ## StudyMate RAG Highlights
 
@@ -63,10 +63,10 @@ tests/                  Focused unit tests
 
 ## How to Run the Project
 
-Follow these steps from the project root folder:
+Follow these steps from the final project folder:
 
 ```powershell
-cd D:\Dekstop\celebl\Final_Project
+cd D:\Dekstop\celebl\Final_Project\Final_project
 ```
 
 ### 1. Create a virtual environment

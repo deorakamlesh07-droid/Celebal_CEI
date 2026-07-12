@@ -6,6 +6,10 @@ __pycache__/
 data/uploads/
 data/vector_store/
 data/exports/
+Final_project/data/uploads/
+Final_project/data/vector_store/
+Final_project/data/exports/
 *.log
 *.err
 .streamlit/secrets.toml
+Final_project/.streamlit/secrets.toml
