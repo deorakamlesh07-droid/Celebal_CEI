@@ -40,8 +40,8 @@ def apply_design_system() -> None:
             --surface-container: #eceef0;
             --outline: #c7c4d8;
             --outline-soft: #e2e8f0;
-            --text: #191c1e;
-            --muted: #464555;
+            --text: #000000;
+            --muted: #000000;
             --primary: #3525cd;
             --primary-soft: #e2dfff;
             --secondary: #505f76;
@@ -68,11 +68,13 @@ def apply_design_system() -> None:
         [data-testid="stAppViewContainer"],
         [data-testid="stMain"],
         [data-testid="stMainBlockContainer"],
+        [data-testid="stHeader"],
         .main,
         .block-container,
         iframe,
         iframe:focus,
         div:focus {
+            border: none !important;
             border-color: transparent !important;
             outline: none !important;
             box-shadow: none !important;
@@ -94,6 +96,74 @@ def apply_design_system() -> None:
         h2, h3 {
             letter-spacing: 0 !important;
             color: var(--text);
+        }
+
+        .stMarkdown,
+        .stText,
+        .stCaption,
+        .stRadio,
+        .stSelectbox,
+        .stTextInput,
+        .stTextArea,
+        .stFileUploader,
+        .stCheckbox,
+        .stSlider,
+        [data-testid="stMarkdownContainer"],
+        [data-testid="stWidgetLabel"],
+        [data-testid="stFileUploader"] *,
+        label,
+        p,
+        span {
+            color: var(--text) !important;
+        }
+
+        [data-testid="stWidgetLabel"] *,
+        [data-testid="stRadio"] label,
+        [data-testid="stRadio"] label *,
+        [data-testid="stRadio"] div[role="radiogroup"] *,
+        [data-testid="stSelectbox"] label *,
+        [data-testid="stTextInput"] label *,
+        [data-testid="stTextArea"] label *,
+        [data-testid="stFileUploader"] label *,
+        [data-testid="stFileUploader"] small,
+        [data-testid="stFileUploader"] button,
+        [data-testid="stFileUploader"] div,
+        [data-testid="stDownloadButton"] button,
+        [data-testid="stDownloadButton"] button * {
+            color: var(--text) !important;
+        }
+
+        [data-baseweb="select"],
+        [data-baseweb="select"] > div,
+        [data-baseweb="input"],
+        [data-baseweb="textarea"],
+        input,
+        textarea {
+            background: var(--surface-lowest) !important;
+            color: var(--text) !important;
+            border-color: var(--outline-soft) !important;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
+        [data-baseweb="select"] *,
+        [data-baseweb="input"] *,
+        [data-baseweb="textarea"] *,
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--text) !important;
+        }
+
+        button,
+        input,
+        textarea,
+        [data-baseweb="select"] > div,
+        [data-testid="stFileUploader"] section,
+        [data-testid="stChatMessage"],
+        div[data-testid="stMetric"] {
+            border-color: transparent !important;
+            outline-color: transparent !important;
+            box-shadow: none !important;
         }
 
         [data-testid="stTabs"] [role="tablist"] {
@@ -262,7 +332,7 @@ def apply_design_system() -> None:
         button[kind="primary"] {
             border-radius: 4px !important;
             font-weight: 700 !important;
-            border: 1px solid var(--primary) !important;
+            border: 1px solid var(--outline-soft) !important;
         }
 
         .stButton > button[kind="primary"],
@@ -271,11 +341,33 @@ def apply_design_system() -> None:
             color: #fff !important;
         }
 
+        .stButton > button:disabled,
+        .stDownloadButton > button:disabled,
+        button:disabled {
+            background: var(--surface-low) !important;
+            color: var(--muted) !important;
+            border: 1px solid var(--outline-soft) !important;
+            opacity: 1 !important;
+        }
+
+        .stButton > button:disabled *,
+        .stDownloadButton > button:disabled *,
+        button:disabled * {
+            color: var(--muted) !important;
+        }
+
         [data-testid="stFileUploader"] {
             background: var(--surface-low);
-            border: 2px dashed var(--outline);
+            border: 1px solid var(--outline-soft) !important;
             border-radius: 8px;
             padding: 14px;
+        }
+
+        [data-testid="stFileUploader"] section {
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
         }
 
         [data-testid="stChatMessage"] {
@@ -365,14 +457,18 @@ def render_document_ingestion(svc: dict) -> None:
         label_visibility="collapsed",
     )
     if uploads and st.button("Save and index", type="primary"):
-        with st.status("Indexing documents", expanded=True) as status:
-            total = 0
-            for upload in uploads:
-                path = svc["documents"].save_upload(upload.name, upload.getvalue())
-                count = svc["rag"].index_document(path)
-                total += count
-                st.write(f"{upload.name}: {count} chunks")
-            status.update(label=f"Indexed {total} chunks", state="complete")
+        try:
+            with st.status("Indexing documents", expanded=True) as status:
+                total = 0
+                for upload in uploads:
+                    path = svc["documents"].save_upload(upload.name, upload.getvalue())
+                    count = svc["rag"].index_document(path)
+                    total += count
+                    st.write(f"{upload.name}: {count} chunks")
+                status.update(label=f"Indexed {total} chunks", state="complete")
+        except Exception as exc:
+            st.error("Document indexing failed. Please try again with a valid PDF, TXT, or Markdown file.")
+            st.caption(str(exc))
 
 
 def render_document_list(svc: dict) -> None:
@@ -498,8 +594,16 @@ def render_chat(svc: dict) -> None:
         return
 
     st.session_state.chat.append({"role": "user", "content": question})
-    with st.spinner("Retrieving and answering"):
-        answer = svc["rag"].ask(question, top_k=top_k)
+    try:
+        with st.spinner("Retrieving and answering"):
+            answer = svc["rag"].ask(question, top_k=top_k)
+    except Exception as exc:
+        st.session_state.chat.append(
+            {"role": "assistant", "content": "I could not generate an answer. Please check the API key, network connection, and indexed documents.", "citations": []}
+        )
+        st.error("Answer generation failed.")
+        st.caption(str(exc))
+        st.rerun()
     citation_labels = [f"{c.source} p.{c.page}" for c in answer.citations]
     st.session_state.chat.append(
         {"role": "assistant", "content": answer.answer, "citations": citation_labels}
@@ -517,18 +621,27 @@ def chat_as_text() -> str:
 
 
 def document_text(svc: dict, path: Path) -> str:
-    pages = svc["documents"].loader.load(path)
-    return "\n\n".join(f"{page.source_name} page {page.page_number}\n{page.text}" for page in pages)
+    try:
+        pages = svc["documents"].loader.load(path)
+        return "\n\n".join(f"{page.source_name} page {page.page_number}\n{page.text}" for page in pages)
+    except Exception as exc:
+        st.error("Could not read the selected document.")
+        st.caption(str(exc))
+        return ""
 
 
 def pdf_download(svc: dict, title: str, body: str, key: str) -> None:
-    st.download_button(
-        f"Download {title} PDF",
-        data=svc["export"].pdf_bytes(title, body),
-        file_name=f"{title.lower().replace(' ', '-')}.pdf",
-        mime="application/pdf",
-        key=key,
-    )
+    try:
+        st.download_button(
+            f"Download {title} PDF",
+            data=svc["export"].pdf_bytes(title, body),
+            file_name=f"{title.lower().replace(' ', '-')}.pdf",
+            mime="application/pdf",
+            key=key,
+        )
+    except Exception as exc:
+        st.error(f"Could not prepare {title} PDF.")
+        st.caption(str(exc))
 
 
 def render_study_tools(svc: dict) -> None:
@@ -625,9 +738,18 @@ def render_exports(svc: dict) -> None:
 
 def main() -> None:
     init_state()
-    svc = services()
     apply_design_system()
-    render_topbar(svc)
+    try:
+        svc = services()
+    except Exception as exc:
+        st.error("StudyMate could not start. Check your Groq API key, dependencies, and data folder permissions.")
+        st.caption(str(exc))
+        st.stop()
+
+    try:
+        render_topbar(svc)
+    except Exception:
+        st.markdown('<div class="sm-topbar"><div class="sm-brand">StudyMate RAG</div></div>', unsafe_allow_html=True)
 
     tab_home, tab_chat, tab_study, tab_sum, tab_voice, tab_learn, tab_export = st.tabs([
         "Home", "Chat", "Tools", "Summarizer", "Voice", "Dashboard", "Export"
